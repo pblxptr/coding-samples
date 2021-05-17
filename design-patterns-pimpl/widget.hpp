@@ -12,7 +12,7 @@ public:
   IWidget(IWidget&&) = default;
   IWidget(const IWidget&) = default;
   IWidget& operator=(IWidget&&) = default;
-  IWidget& operator=(IWidget&) = default;
+  IWidget& operator=(const IWidget&) = default;
 
   virtual uint32_t get_id() const = 0;
   virtual const std::string& get_name() const = 0;
