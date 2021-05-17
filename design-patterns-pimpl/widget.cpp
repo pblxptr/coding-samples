@@ -20,6 +20,8 @@ Widget::Widget(const Gadget& gadget)
   )}
 {}
 
+/* Special functions functions */
+
 Widget::~Widget() = default;
 
 Widget::Widget(const Widget& rhs)
@@ -33,6 +35,7 @@ Widget& Widget::operator=(const Widget& rhs)
   return *this;
 }
 
+/* Interface implementation */
 
 uint32_t Widget::get_id() const
 {
