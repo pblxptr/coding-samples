@@ -110,6 +110,11 @@ public:
   }
 };
 
+template<class THandler, class... TArgs>
+auto instancePerEvent(TArgs&&... args)
+{
+  return [... args = std::forward<TArgs>(args...)](const auto& event) { THandler{args...}(event); };
+}
 
 int main()
 {
@@ -124,6 +129,9 @@ int main()
   dispatcher.subscribe<Event1>(handler1_2);
   dispatcher.subscribe<Event2>(handler2_1);
   dispatcher.subscribe<Event2>(handler2_2);
+
+
+  dispatcher.subscribe<Event2>(instancePerEvent<Event2Handler2>());
 
   dispatcher.publish(Event1{});
   dispatcher.publish(Event2{});
